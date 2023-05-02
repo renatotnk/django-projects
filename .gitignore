@@ -129,6 +129,6 @@ db copy.sqlite3
 static/
 
 # Add again to ignoring in the future
-db.sqlite3
+!db.sqlite3
 
 django-projects.code-workspace
