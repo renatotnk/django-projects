@@ -5,6 +5,6 @@ from django.shortcuts import render
 
 
 def home(req):
-    return render(req, 'recipes/home.html', status=200, context={
+    return render(req, 'recipes/pages/home.html', status=200, context={
         'name': 'Test props'
     })
