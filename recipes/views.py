@@ -9,7 +9,7 @@ from .models import Recipe
 
 
 def home(req):
-    recipes = Recipe.objects.all().order_by('-id')
+    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
     return render(req, 'recipes/pages/home.html', status=200, context={
         'recipes': recipes,
     })
@@ -17,9 +17,10 @@ def home(req):
 
 def category(req, category_id):
     recipes = Recipe.objects.filter(
-        category__id = category_id
+        category__id=category_id,
+        is_published=True
         ).order_by('-id')
-    return render(req, 'recipes/pages/home.html', status=200, context={
+    return render(req, 'recipes/pages/category.html', status=200, context={
         'recipes': recipes,
     })
 
