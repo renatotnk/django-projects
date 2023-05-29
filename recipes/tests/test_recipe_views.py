@@ -1,3 +1,5 @@
+from unittest import skip
+
 from django.urls import resolve, reverse
 
 from recipes import views
@@ -22,12 +24,16 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(reverse('recipes:home'))
         self.assertTemplateUsed(response, 'recipes/pages/home.html')
 
+    @skip('WIP: An example of skipping this test!')
     def test_recipe_home_template_shows_no_recipes_found_if_no_recipes(self):
         response = self.client.get(reverse('recipes:home'))
         self.assertIn(
             '<h1>No Recipes found!</h1>',
             response.content.decode('utf-8')
         )
+
+        # Must write a few more stuff about this test
+        self.fail('Remember to finish this test!!')
 
     def test_recipe_home_template_loads_recipes(self):
         # Need a recipe for this test
