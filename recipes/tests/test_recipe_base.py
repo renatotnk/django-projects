@@ -34,7 +34,7 @@ class RecipeTestBase(TestCase):
         title='Recipe Title',
         description='Recipe Description',
         slug='recipe-slug',
-        preparation_time='10',
+        preparation_time=10,
         preparation_time_unit='Minutos',
         servings=5,
         servings_unit='Porções',
@@ -50,7 +50,7 @@ class RecipeTestBase(TestCase):
 
         return Recipe.objects.create(
             category=self.make_category(**category_data),
-            author=self.make_author(**category_data),
+            author=self.make_author(**author_data),
             title=title,
             description=description,
             slug=slug,
