@@ -48,8 +48,11 @@ def search(req):
 
     recipes = Recipe.objects.filter(
         # __icontains === SELECT recipe WHERE title LIKE search_term
-        Q(title__icontains=search_term) |
-        Q(description__icontains=search_term),
+        Q(
+            Q(title__icontains=search_term) |
+            Q(description__icontains=search_term),
+        ),
+        is_published=True
     ).order_by('-id')
 
     return render(req, 'recipes/pages/search.html', {
