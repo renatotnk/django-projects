@@ -16,7 +16,10 @@ PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 def home(req):
     recipes = Recipe.objects.filter(is_published=True).order_by('-id')
 
+    # messages.success(req, 'Epa, você foi pesquisar algo que eu vi.')
+    messages.error(req, 'Epa, você foi pesquisar algo que eu vi.')
     messages.success(req, 'Epa, você foi pesquisar algo que eu vi.')
+    messages.info(req, 'Epa, você foi pesquisar algo que eu vi.')
 
     page_obj, pagination_range = make_pagination(req, recipes, PER_PAGE)
 
