@@ -17,7 +17,7 @@ def home(req):
     recipes = Recipe.objects.filter(is_published=True).order_by('-id')
 
     # messages.success(req, 'Epa, você foi pesquisar algo que eu vi.')
-    
+
     page_obj, pagination_range = make_pagination(req, recipes, PER_PAGE)
 
     return render(req, 'recipes/pages/home.html', status=200, context={
