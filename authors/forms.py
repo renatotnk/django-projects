@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 def add_attr(field, attr_name, attr_new_val):
@@ -66,3 +67,15 @@ class RegisterForm(forms.ModelForm):
                 'required': 'This field must not be empty',
             }
         }
+
+    def clean_password(self):
+        data = self.cleaned_data.get('password')
+
+        if 'atencao' in data:
+            raise ValidationError(
+                'Não digite %(value)s na password',
+                code='invalid',
+                params={'value': '"John Doe"'}
+            )
+
+        return data
